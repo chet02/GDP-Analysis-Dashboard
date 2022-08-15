@@ -1,2 +1,26 @@
--- query for using the specific database
+
 USE GDP_project_db
+
+--CREATE THE TABLE
+
+IF OBJECT_ID('Raw_Data_GDP') IS NOT NULL DROP TABLE Raw_Data_GDP
+
+CREATE TABLE Raw_Data_GDP 
+( DEMO_IND NVARCHAR(200), 
+  INDICATOR NVARCHAR(200),
+  [LOCATION] NVARCHAR(200),
+  COUNTRY NVARCHAR(200),
+  [TIME] NVARCHAR(200),
+  [VALUE] FLOAT,
+  [FLAG CODES] NVARCHAR(200),
+  FLAGS NVARCHAR(200)
+  )
+
+-- IMPORT RAW DATA
+
+BULK INSERT Raw_Data_GDP
+FROM 'C:\Users\natac\OneDrive\Desktop\GDP-Analysis-Dashboard\gdp_raw_data.csv'
+WITH (FORMAT ='CSV')
+
+
+
